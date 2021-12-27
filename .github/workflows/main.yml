@@ -17,9 +17,9 @@ jobs:
            distribution: 'adopt'
            java-version: '11'
        - name: Build With Gradle
-         run: ./gradlew build
+         run: ./gradlew assembleMemeDebug
        - name: Upload APK
          uses: actions/upload-artifact@v2.3.1
          with:
            name: app
-           path: app/build/outputs/apk/debug/app-debug.apk
+           path: app/build/outputs/apk/debug/life.apk
