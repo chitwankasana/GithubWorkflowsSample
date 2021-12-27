@@ -20,8 +20,13 @@ jobs:
          run: ./gradlew assemblelifeDebug
        - name: Build flavor meme
          run: ./gradlew assemblememeDebug
-       - name: Upload APK
+       - name: Upload life APK
          uses: actions/upload-artifact@v2.3.1
          with:
-           name: app
+           name: life
            path: app/build/outputs/apk/life/debug/app-life-debug.apk
+       - name: Upload Meme Apk
+         uses: actions/upload-artifact@v2.3.1
+         with:
+           name: meme
+           path: app/build/outputs/apk/meme/debug/app-meme-debug.apk
