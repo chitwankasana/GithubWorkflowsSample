@@ -15,6 +15,39 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    flavorDimensions "version"
+    productFlavors {
+        create("meme") {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+
+//            applicationIdSuffix = ""
+//            versionNameSuffix = ""
+            applicationId "com.githubworkflowsample.meme"
+            versionCode 5
+            versionName "v1.0.4"
+            resValue "string", "app_name", "Meme"
+//            manifestPlaceholders = [
+//                    appIcon: "@mipmap/ic_app_icon_bonita",
+//                    appIconRound: "@mipmap/ic_app_icon_bonita"
+//            ]
+        }
+        create("life") {
+
+//            applicationIdSuffix = ""
+//            versionNameSuffix = ""
+            applicationId "com.githubworkflowsample.life"
+            versionCode 5
+            versionName "v1.0.4"
+            resValue "string", "app_name", "Lifey"
+//            manifestPlaceholders = [
+//                    appIcon: "@mipmap/ic_app_icon_new",
+//                    appIconRound: "@mipmap/ic_app_icon_new"
+//            ]
+        }
+    }
 
     buildTypes {
         release {
