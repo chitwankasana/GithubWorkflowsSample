@@ -17,9 +17,9 @@ jobs:
            distribution: 'adopt'
            java-version: '11'
        - name: Build flavor life
-         run: ./gradlew assemblelifedebug
+         run: ./gradlew assemblelifeDebug
        - name: Build flavor meme
-         run: ./gradlew assemblememedebug
+         run: ./gradlew assemblememeDebug
        - name: Upload APK
          uses: actions/upload-artifact@v2.3.1
          with:
