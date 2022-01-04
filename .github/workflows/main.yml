@@ -17,16 +17,16 @@ jobs:
            distribution: 'adopt'
            java-version: '11'
        - name: Build flavor life
-         run: ./gradlew assemblelifeDebug
+         run: ./gradlew assemblelifeRelease
        - name: Build flavor meme
-         run: ./gradlew assemblememeDebug
-       - name: Upload life APK
+         run: ./gradlew assemblememeRelease
+       - name: Upload life Bundle
          uses: actions/upload-artifact@v2.3.1
          with:
            name: life
-           path: app/build/outputs/apk/life/debug/app-life-debug.apk
-       - name: Upload Meme Apk
+           path: app/life/release/app-life-release.aab
+       - name: Upload Meme Bundle
          uses: actions/upload-artifact@v2.3.1
          with:
            name: meme
-           path: app/build/outputs/apk/meme/debug/app-meme-debug.apk
+           path:  app/life/release/app-meme-release.aab
