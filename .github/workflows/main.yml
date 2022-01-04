@@ -40,6 +40,21 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
+          
+          
+       - name: Create service_account.json
+         id: createServiceAccount
+         run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
+         
+       - name: Deploy to Play Store (BETA)
+         id: deploy
+         uses: r0adkll/upload-google-play@v1
+         with:
+          serviceAccountJson: service_account.json
+          packageName: com.githubworkflowsample.life
+          releaseFile: app/build/outputs/bundle/lifeRelease/app-life-release.aab
+          track: beta
+          whatsNewDirectory: whatsnew/
          
        - name: Upload life Bundle
          uses: actions/upload-artifact@v2.3.1
