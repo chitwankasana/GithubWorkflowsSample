@@ -25,7 +25,7 @@ jobs:
          id: signlife
          uses: r0adkll/sign-android-release@v1
          with:
-          releaseDirectory: app/build/outputs/bundle/lifeRelease/
+          releaseDirectory: app/build/outputs/bundle/lifeRelease/app-life-release.aab
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
@@ -35,7 +35,7 @@ jobs:
          id: signmeme
          uses: r0adkll/sign-android-release@v1
          with:
-          releaseDirectory: app/build/outputs/bundle/memeRelease/
+          releaseDirectory: app/build/outputs/bundle/memeRelease/app-meme-release.aab
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
