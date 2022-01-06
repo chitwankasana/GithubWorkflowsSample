@@ -53,6 +53,7 @@ jobs:
          with:
           serviceAccountJson: service_account.json
           packageName: com.githubworkflowsample.life
+          status: draft
           releaseFiles: app/build/outputs/bundle/lifeRelease/app-life-release.aab
           track: internal
           
