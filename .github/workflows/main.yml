@@ -17,16 +17,53 @@ jobs:
            distribution: 'adopt'
            java-version: '11'
        - name: Build flavor life
-         run: ./gradlew assemblelifeDebug
+         run: ./gradlew bundlelifeRelease
        - name: Build flavor meme
-         run: ./gradlew assemblememeDebug
-       - name: Upload life APK
+         run: ./gradlew bundlememeRelease
+         
+       - name: Sign Life AAB
+         id: signlife
+         uses: r0adkll/sign-android-release@v1
+         with:
+          releaseDirectory: app/build/outputs/bundle/lifeRelease
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          
+       - name: Sign Meme AAB
+         id: signmeme
+         uses: r0adkll/sign-android-release@v1
+         with:
+          releaseDirectory: app/build/outputs/bundle/memeRelease
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          
+          
+       - name: Create service_account.json
+         id: createServiceAccount
+         run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
+         
+       - name: Deploy to Play Store (Internal)
+         id: deploy
+         uses: r0adkll/upload-google-play@v1
+         with:
+          serviceAccountJson: service_account.json
+          packageName: com.githubworkflowsample.life
+          releaseFiles: app/build/outputs/bundle/lifeRelease/app-life-release.aab
+          track: internal
+          
+         
+       - name: Upload life Bundle
          uses: actions/upload-artifact@v2.3.1
          with:
            name: life
-           path: app/build/outputs/apk/life/debug/app-life-debug.apk
-       - name: Upload Meme Apk
+           path: app/build/outputs/bundle/lifeRelease/app-life-release.aab
+     
+       - name: Upload Meme Bundle
          uses: actions/upload-artifact@v2.3.1
          with:
            name: meme
-           path: app/build/outputs/apk/meme/debug/app-meme-debug.apk
+           path: app/build/outputs/bundle/memeRelease/app-meme-release.aab
