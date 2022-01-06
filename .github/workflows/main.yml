@@ -18,8 +18,7 @@ jobs:
            java-version: '11'
        - name: Build flavor life
          run: ./gradlew bundlelifeRelease
-       - name: Build flavor meme
-         run: ./gradlew bundlememeRelease
+      
          
        - name: Sign Life AAB
          id: signlife
