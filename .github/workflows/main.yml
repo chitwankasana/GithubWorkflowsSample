@@ -47,16 +47,15 @@ jobs:
          id: createServiceAccount
          run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
          
-       - name: Deploy to Play Store (beta)
+       - name: Deploy to Play Store (internal)
          id: deploy
          uses: r0adkll/upload-google-play@v1.0.15
          with:
           serviceAccountJson: service_account.json
           packageName: com.githubworkflowsample.life
-          status: draft
           userFraction: 0.0-0.1
           releaseFiles: app/build/outputs/bundle/lifeRelease/app-life-release.aab
-          track: beta
+          track: internal
           
          
        - name: Upload life Bundle
