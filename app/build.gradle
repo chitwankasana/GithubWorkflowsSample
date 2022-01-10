@@ -26,8 +26,8 @@ android {
 //            applicationIdSuffix = ""
 //            versionNameSuffix = ""
             applicationId "com.githubworkflowsample.meme"
-            versionCode 7
-            versionName "v1.0.7"
+            versionCode 9
+            versionName "v1.0.9"
             resValue "string", "app_name", "Meme"
 //            manifestPlaceholders = [
 //                    appIcon: "@mipmap/ic_app_icon_bonita",
@@ -39,8 +39,8 @@ android {
 //            applicationIdSuffix = ""
 //            versionNameSuffix = ""
             applicationId "com.githubworkflowsample.life"
-            versionCode 8
-            versionName "v1.0.8"
+            versionCode 9
+            versionName "v1.0.9"
             resValue "string", "app_name", "Lifey"
 //            manifestPlaceholders = [
 //                    appIcon: "@mipmap/ic_app_icon_new",
